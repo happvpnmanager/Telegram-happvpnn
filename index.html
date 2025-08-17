@@ -1,0 +1,123 @@
+# Create two ready-to-upload files for the user: a simple landing page and an auto-redirect version.
+basic_html = """<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>HAPP vpn Telegram</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #0088cc, #00bfff);
+      margin: 0;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: center;
+      max-width: 420px;
+    }
+    .card h1 {
+      margin-bottom: 6px;
+      color: #0088cc;
+      font-size: 26px;
+    }
+    .card p { margin: 0 0 16px; }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #0088cc;
+      color: white;
+      font-size: 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .btn:hover { background: #006699; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>HAPP vpn</h1>
+    <p>Telegram kanalımızı açmak için aşağıdaki butona tıkla.</p>
+    <a class="btn" href="https://t.me/happvpnn">Telegram'ı Aç</a>
+  </div>
+</body>
+</html>
+"""
+
+auto_html = """<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>HAPP vpn — Telegram'a Aç</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function () {
+      var app = 'tg://resolve?domain=happvpnn';
+      var web = 'https://t.me/happvpnn';
+      // Uygulamayı dene; olmadıysa web'e yönlendir
+      setTimeout(function(){ window.location.href = web; }, 1200);
+      window.location.href = app;
+    })();
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #0088cc, #00bfff);
+      margin: 0;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: center;
+      max-width: 460px;
+    }
+    .card h1 {
+      margin-bottom: 6px;
+      color: #0088cc;
+      font-size: 26px;
+    }
+    .card p { margin: 0 0 16px; }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #0088cc;
+      color: white;
+      font-size: 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .btn:hover { background: #006699; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>HAPP vpn</h1>
+    <p>Telegram otomatik açılmazsa butona tıkla.</p>
+    <a class="btn" href="https://t.me/happvpnn">Telegram'ı Aç</a>
+  </div>
+</body>
+</html>
+"""
+
+with open('/mnt/data/index.html', 'w', encoding='utf-8') as f:
+    f.write(basic_html)
+
+with open('/mnt/data/index_autoredirect.html', 'w', encoding='utf-8') as f:
+    f.write(auto_html)
+
+'/mnt/data/index.html ve /mnt/data/index_autoredirect.html dosyaları hazır.'
